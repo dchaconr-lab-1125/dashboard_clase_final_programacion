@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: Chacon-Daniel-flight-dashboard   # CAMBIA esto: debe ser unico en toda la plataforma
+    runtime: python
+    plan: free                           # declarar SIEMPRE: el plan por defecto es de pago
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn dashboard:server --bind 0.0.0.0:$PORT
+    healthCheckPath: /
+    autoDeployTrigger: commit
